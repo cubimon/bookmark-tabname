@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Bookmark Tabname",
+  "description": "Rename tabs to bookmark names",
+  "version": "1.0",
+  "permissions": [
+	  "bookmarks",
+	  "scripting",
+	  "tabs"
+  ],
+  "host_permissions": [
+	  "https://*/*",
+	  "http://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  }
+}
