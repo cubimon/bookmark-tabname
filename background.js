@@ -17,23 +17,33 @@ function setTitle(title) {
 	document.title = title;
 }
 
+function setTabTitleIfBookmark(tab) {
+	if (tab.url.startsWith("chrome://")) {
+		return;
+	}
+	if (!(tab.url in urlToTabnameMap)) {
+		return;
+	}
+	chrome.scripting.executeScript({
+		target: {tabId: tab.id},
+		func: setTitle,
+		args: [urlToTabnameMap[tab.url]],
+	});
+}
+
 function visitTab(tabs) {
 	for (const tab of tabs) {
-		if (tab.url.startsWith("chrome://")) {
-			continue;
-		}
-		if (!(tab.url in urlToTabnameMap)) {
-			continue;
-		}
-		chrome.scripting.executeScript({
-			target: {tabId: tab.id},
-			func: setTitle,
-			args: [urlToTabnameMap[tab.url]],
-		});
+		setTabTitleIfBookmark(tab);
 	}
 
+}
+
+function tabUpdated(tabId, changeInfo, tab) {
+	setTabTitleIfBookmark(tab);
 }
 
 chrome.bookmarks.getTree(visitBookmarks);
 
 chrome.tabs.query({}, visitTab);
+chrome.tabs.onUpdated.addListener(tabUpdated);
+
