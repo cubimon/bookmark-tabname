@@ -1,0 +1,26 @@
+{
+  "name": "bookmark-tabname",
+  "version": "1.0.0",
+  "description": "Change tab names from bookmarks",
+  "homepage": "https://github.com/cubimon/bookmark-tabname#readme",
+  "bugs": {
+    "url": "https://github.com/cubimon/bookmark-tabname/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cubimon/bookmark-tabname.git"
+  },
+  "license": "ISC",
+  "author": "Cubimon",
+  "type": "module",
+  "main": "background.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "chrome-types": "^0.1.403",
+    "eslint": "^9.39.2",
+    "globals": "^16.5.0"
+  }
+}

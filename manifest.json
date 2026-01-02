@@ -3,17 +3,38 @@
   "name": "Bookmark Tabname",
   "description": "Rename tabs to bookmark names",
   "version": "1.0",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "cubimon@bookmark-tabname"
+    }
+  },
   "permissions": [
-	  "bookmarks",
-	  "scripting",
-	  "tabs"
+    "bookmarks",
+    "scripting",
+    "tabs",
+    "activeTab",
+    "storage",
+    "sessions"
   ],
   "host_permissions": [
-	  "https://*/*",
-	  "http://*/*"
+    "https://*/*",
+    "http://*/*"
   ],
   "background": {
-    "service_worker": "background.js",
+    "scripts": [
+      "background.mjs"
+    ],
     "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Alt+E"
+      },
+      "description": "Opens a popup to add a custom tab name for the fixed tab"
+    }
   }
 }
