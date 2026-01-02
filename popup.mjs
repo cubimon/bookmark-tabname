@@ -27,3 +27,7 @@ input.addEventListener("keydown", async (e) => {
 		window.close();
 	}
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+	input.focus();
+});
